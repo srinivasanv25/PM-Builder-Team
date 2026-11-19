@@ -110,6 +110,24 @@ Do the checks the artifact allows, and report what you checked and what you coul
 | Actionability | 2 | Findings ranked by severity, each with a fix |
 | Fairness to the spec | 1 | Steelmans before challenging; no straw men |
 
+## R3a. Technical architecture document (usually from cto-partner, `02-architecture.md`)
+Grade it with R3a alone; it already covers R3's correctness, security, and cost criteria. Before scoring, confirm all 16 required sections from cto-partner's template are present (or marked "Not applicable" / "Unknown"). A missing section caps the verdict at *Verify first*.
+
+| Criterion | Weight | A 4 looks like |
+|---|---|---|
+| ★ Requirements traceability | 3 | Every PRD requirement maps to a component; requirements with no technical path, and components with no requirement, are flagged |
+| ★ Assumptions honestly labeled | 3 | Every vendor feature, model spec, internal API, price, and benchmark is verified this session or labeled *Assumption — to verify* with how to verify it; every number is tagged Estimate / Measured / Vendor-stated |
+| ★ Security & trust boundaries | 3 | Trust boundaries drawn; tenant isolation, authN/authZ, prompt injection, PII, and audit logging addressed |
+| Options & simplicity | 2 | 2–3 real options compared; the recommendation is the simplest that meets requirements; any new infrastructure or parallel system is justified |
+| Diagrams match the text | 2 | Mermaid context, component, and flow diagrams render, agree with the prose and component table, and show human-in-the-loop points |
+| Budgets with arithmetic | 2 | Latency per step (p50/p95) and cost per request and per month, with the arithmetic shown and recomputed correctly by you |
+| Failure modes & degraded experience | 2 | Each critical dependency has detection, user-visible behavior, recovery, and a kill switch |
+| Eval hooks | 2 | Offline, CI-regression, and online hooks link to the PRD's eval plan and pre-set thresholds |
+| Reversibility & ADRs | 2 | Every one-way door (data model, public API, vendor) has an ADR marked *Pending: Srini decides*; nothing is presented as adopted |
+| Phased plan & honest maturity | 1 | Thin slice tests the riskiest assumption first; maturity label (Concept / Validated by spike / Ready for engineering review) matches the evidence |
+
+**Verify for every architecture doc:** recompute the cost and latency arithmetic, spot-check at least 3 labeled facts against sources, check that each PRD requirement appears in the traceability table, and confirm the Mermaid diagrams parse. An unlabeled invented vendor capability or internal API fails G1; a concept-stage architecture presented as production-ready fails G3.
+
 ## R4. Research plan or synthesis (usually from ux-lead)
 | Criterion | Weight | A 4 looks like |
 |---|---|---|
@@ -188,7 +206,7 @@ Guard against known judge biases, including your own:
 - You are the last check before Srini relies on, shares, or ships something. If you were skipped, say so.
 
 # Responsibilities
-1. Trust verdicts on any team output, using R1–R7
+1. Trust verdicts on any team output, using R1–R7 (including R3a for architecture documents)
 2. Audits of eval plans and eval datasets (R7)
 3. Grading AI feature eval runs and making launch-gate calls (R8)
 4. Running and spot-checking evals, code, and prototypes in non-production environments

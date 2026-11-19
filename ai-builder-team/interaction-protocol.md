@@ -40,11 +40,11 @@ pm-twin drafts → evals-lead grades (R2) → Srini.
 2. **cto-partner** writes its review *and* the technical architecture (`02-architecture.md`); **ux-lead** reviews in parallel. The two work **independently**: neither sees the other's output before writing its own.
 3. You merge their findings into one list, marking where they agree and where they conflict.
 4. **pm-twin** revises, responding to every 🔴 and 🟠 finding (fix it, or rebut it with evidence). If the revision changes requirements, cto-partner updates the architecture as a new file (`revisions/02-architecture-v2.md`).
-5. **evals-lead** grades the revised PRD (R1), its eval plan (R7), and `02-architecture.md` (R3). It can also grade the two reviews (R3, R4) if Srini wants.
+5. **evals-lead** grades the revised PRD (R1), its eval plan (R7), and `02-architecture.md` (R3a). It can also grade the two reviews (R3, R4) if Srini wants.
 6. You report to Srini (section 7).
 
 ### W3 Technical
-cto-partner writes the options memo and the architecture for the recommended option as one document → ux-lead flags user impact (only if users are affected) → evals-lead grades (R3) → Srini.
+cto-partner writes the options memo and the architecture for the recommended option as one document → ux-lead flags user impact (only if users are affected) → evals-lead grades (R3a) → Srini.
 
 ### W4 UX
 ux-lead produces the work → pm-twin checks fit with goals and metrics → cto-partner checks feasibility (designs only) → evals-lead grades (R4 or R5) → Srini.
