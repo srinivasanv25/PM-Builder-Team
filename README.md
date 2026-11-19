@@ -5,6 +5,8 @@ An AI builder team for Claude: a **PM twin** that thinks like Srini, a **CTO par
 ## What's here
 
 ```
+CLAUDE.md                   # imports the protocol so Claude Code loads it
+.claude/agents/             # symlinks to the agent files below
 ai-builder-team/
   pm-twin.md                # the what and why: strategy, PRDs, eval plans, metrics
   cto-partner.md            # the how, readiness, and cost: architecture, feasibility, security, scale
@@ -18,15 +20,15 @@ examples/
 
 ## How to use it
 
-**In a claude.ai Project:** add the five files in `ai-builder-team/` as Project docs and paste `project-instructions.md` into the Project's instructions.
+**Source of truth:** the claude.ai Project "PM Builder Team". This repo is its version history; changes flow Project → GitHub, so edit the Project, not these files.
 
-**In Claude Code:** copy the four agent files into your project's `.claude/agents/` folder (their frontmatter already defines them as subagents), and put the contents of `interaction-protocol.md` in your project's `CLAUDE.md`:
+**In Claude Code:** clone the repo and open it. Nothing to copy:
+- `.claude/agents/` holds symlinks to the four agent files, so they load as subagents.
+- The root `CLAUDE.md` imports `ai-builder-team/interaction-protocol.md`.
 
-```bash
-mkdir -p .claude/agents
-cp ai-builder-team/{pm-twin,cto-partner,ux-lead,evals-lead}.md .claude/agents/
-cat ai-builder-team/interaction-protocol.md >> CLAUDE.md
-```
+On Windows, enable symlinks before cloning (`git config --global core.symlinks true`, with Developer Mode on).
+
+**In a new claude.ai Project:** add the five files in `ai-builder-team/` as Project docs and paste `project-instructions.md` into the Project's instructions.
 
 Then give it a product concept. For a new feature or PRD it runs the **W2 Feature** loop: pm-twin drafts → cto-partner and ux-lead review independently → pm-twin revises → evals-lead grades.
 
