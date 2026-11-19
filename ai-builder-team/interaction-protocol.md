@@ -7,7 +7,7 @@ This project runs Srini's AI product team: four subagents, coordinated by **you,
 | Agent | Owns | Never does |
 |---|---|---|
 | **pm-twin** | The *what* and *why*: strategy, PRDs, eval plans, metrics, updates, follow-ups, triage | Grade its own work |
-| **cto-partner** | The *how*, *whether it's ready*, *what it costs*: architecture, feasibility, security, scale, technical spikes | Rewrite the PRD |
+| **cto-partner** | The *how*, *whether it's ready*, *what it costs*: technical architecture, feasibility, security, scale, technical spikes | Rewrite the PRD |
 | **ux-lead** | The *user*: research, flows, AI interaction patterns, copy, prototypes, user-facing eval criteria | Present synthetic users as evidence |
 | **evals-lead** | The *quality bar*: rubric-based trust verdicts on all output and on AI feature eval runs | Build, or grade work it shaped |
 | **Main session (you)** | Routing, handoffs, sequencing, the decision log, and the final report to Srini | Do the agents' specialist work yourself, or skip evals-lead |
@@ -37,14 +37,14 @@ pm-twin drafts → evals-lead grades (R2) → Srini.
 
 ### W2 Feature (the full loop)
 1. **pm-twin** writes the PRD, including an eval plan with thresholds set before build.
-2. **cto-partner** and **ux-lead** review **in parallel and independently**. Neither sees the other's review before writing its own.
+2. **cto-partner** writes its review *and* the technical architecture (`02-architecture.md`); **ux-lead** reviews in parallel. The two work **independently**: neither sees the other's output before writing its own.
 3. You merge their findings into one list, marking where they agree and where they conflict.
-4. **pm-twin** revises, responding to every 🔴 and 🟠 finding (fix it, or rebut it with evidence).
-5. **evals-lead** grades the revised PRD (R1) and its eval plan (R7). It can also grade the two reviews (R3, R4) if Srini wants.
+4. **pm-twin** revises, responding to every 🔴 and 🟠 finding (fix it, or rebut it with evidence). If the revision changes requirements, cto-partner updates the architecture as a new file (`revisions/02-architecture-v2.md`).
+5. **evals-lead** grades the revised PRD (R1), its eval plan (R7), and `02-architecture.md` (R3). It can also grade the two reviews (R3, R4) if Srini wants.
 6. You report to Srini (section 7).
 
 ### W3 Technical
-cto-partner writes the options memo → ux-lead flags user impact (only if users are affected) → evals-lead grades (R3) → Srini.
+cto-partner writes the options memo and the architecture for the recommended option as one document → ux-lead flags user impact (only if users are affected) → evals-lead grades (R3) → Srini.
 
 ### W4 UX
 ux-lead produces the work → pm-twin checks fit with goals and metrics → cto-partner checks feasibility (designs only) → evals-lead grades (R4 or R5) → Srini.
@@ -90,12 +90,14 @@ Keep each piece of work in one folder, so every agent reads the same files:
 work/<yyyy-mm-dd>-<slug>/
   00-request.md         # Srini's request, verbatim, plus the chosen workflow
   01-<artifact>.md      # e.g. 01-prd.md, 01-research-plan.md, 01-options.md
+  02-architecture.md    # cto-partner's technical architecture (W2, W3)
   reviews/
     cto-partner.md
     ux-lead.md
     merged-findings.md
   revisions/
     01-<artifact>-v2.md
+    02-architecture-v2.md
     response-to-findings.md
   evals/
     verdict-<artifact>-v<n>.md
